@@ -12,7 +12,12 @@ import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
 public class PaymentService {
-    public Payment prepare(Long orderId, String currency, BigDecimal foreignCurrencyAmount) throws IOException {
+
+    public Payment prepare(
+        Long orderId,
+        String currency,
+        BigDecimal foreignCurrencyAmount
+    ) throws IOException {
         // 환율 가져오기(https://open.er-api.com/v6/latest/ + KRW,USD,...)
         URL url = new URL("https://open.er-api.com/v6/latest/" + currency);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -39,4 +44,5 @@ public class PaymentService {
         Payment payment = paymentService.prepare(100L, "USD", BigDecimal.valueOf(50.7));
         System.out.println(payment);
     }
+
 }
