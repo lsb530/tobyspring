@@ -1,7 +1,7 @@
-package boki.tobyspring;
+package boki.tobyspring.exrate;
 
+import boki.tobyspring.payment.ExRateProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;

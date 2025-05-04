@@ -1,5 +1,6 @@
-package boki.tobyspring;
+package boki.tobyspring.exrate;
 
+import boki.tobyspring.payment.ExRateProvider;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

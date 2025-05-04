@@ -1,4 +1,4 @@
-package boki.tobyspring;
+package boki.tobyspring.exrate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

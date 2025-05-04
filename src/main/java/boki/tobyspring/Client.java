@@ -1,5 +1,7 @@
 package boki.tobyspring;
 
+import boki.tobyspring.payment.Payment;
+import boki.tobyspring.payment.PaymentService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
