@@ -1,16 +1,13 @@
 package boki.tobyspring.payment;
 
-import boki.tobyspring.exrate.WebApiExRateProvider;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 class PaymentServiceTest {
 
     @Test
