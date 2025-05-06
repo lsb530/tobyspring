@@ -22,7 +22,7 @@ public class PaymentService {
         Long orderId,
         String currency,
         BigDecimal foreignCurrencyAmount
-    ) throws IOException {
+    ) {
         BigDecimal exRate = exRateProvider.getExRate(currency);
 
         return Payment.createPrepared(orderId, currency, foreignCurrencyAmount, exRate, LocalDateTime.now(clock));
