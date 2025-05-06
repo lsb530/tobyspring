@@ -3,11 +3,14 @@ package boki.tobyspring;
 import boki.tobyspring.api.ApiTemplate;
 import boki.tobyspring.api.ErApiExtractor;
 import boki.tobyspring.api.SimpleApiExecutor;
+import boki.tobyspring.exrate.RestTemplateExRateProvider;
 import boki.tobyspring.payment.ExRateProvider;
 import boki.tobyspring.exrate.WebApiExRateProvider;
 import boki.tobyspring.payment.PaymentService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.client.JdkClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Clock;
 
@@ -20,13 +23,13 @@ public class PaymentConfig {
     }
 
     @Bean
-    public ApiTemplate apiTemplate() {
-        return new ApiTemplate(new SimpleApiExecutor(), new ErApiExtractor());
+    public RestTemplate restTemplate() {
+        return new RestTemplate(new JdkClientHttpRequestFactory());
     }
 
     @Bean
     public ExRateProvider exRateProvider() {
-        return new WebApiExRateProvider(apiTemplate());
+        return new RestTemplateExRateProvider(restTemplate());
     }
 
     @Bean
