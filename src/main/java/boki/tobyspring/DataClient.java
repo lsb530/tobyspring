@@ -21,24 +21,19 @@ public class DataClient {
         new TransactionTemplate(transactionManager).execute(new TransactionCallback<Order>() {
             @Override
             public Order doInTransaction(TransactionStatus status) {
+                Order order = new Order("100", BigDecimal.TEN);
+                repository.save(order);
+
+                System.out.println(order);
+
+                // Order order2 = new Order("100", BigDecimal.ONE);
+                // repository.save(order2);
+
                 return null;
             }
         });
 
-        // transaction begin
-        Order order = new Order("100", BigDecimal.TEN);
-        repository.save(order);
 
-        System.out.println(order);
-
-        try {
-            Order order2 = new Order("100", BigDecimal.ONE);
-            repository.save(order2);
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            throw e;
-        }
-        // commit
     }
 
 }
