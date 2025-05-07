@@ -1,6 +1,7 @@
 package boki.tobyspring;
 
-import boki.tobyspring.data.OrderRepository;
+import boki.tobyspring.data.JpaOrderRepository;
+import boki.tobyspring.order.OrderRepository;
 import boki.tobyspring.order.OrderService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ public class OrderConfig {
 
     @Bean
     public OrderRepository orderRepository() {
-        return new OrderRepository();
+        return new JpaOrderRepository();
     }
 
     @Bean
