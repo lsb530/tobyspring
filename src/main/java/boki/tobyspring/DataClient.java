@@ -2,6 +2,7 @@ package boki.tobyspring;
 
 import boki.tobyspring.data.OrderRepository;
 import boki.tobyspring.order.Order;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -21,8 +22,12 @@ public class DataClient {
         // 1. JdbcSQLIntegrityConstraintViolationException
         // 2. ConstraintViolationException
         // 3. RollbackException
-        Order order2 = new Order("100", BigDecimal.ONE);
-        repository.save(order2);
+        try {
+            Order order2 = new Order("100", BigDecimal.ONE);
+            repository.save(order2);
+        } catch (ConstraintViolationException e) {
+            System.out.println("주문번호 충돌을 복구하는 작업");
+        }
     }
 
 }
