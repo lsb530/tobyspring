@@ -4,7 +4,6 @@ import boki.tobyspring.order.Order;
 import boki.tobyspring.order.OrderService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.orm.jpa.JpaTransactionManager;
 
 import java.math.BigDecimal;
 

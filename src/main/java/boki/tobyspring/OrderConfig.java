@@ -3,6 +3,8 @@ package boki.tobyspring;
 import boki.tobyspring.data.JdbcOrderRepository;
 import boki.tobyspring.order.OrderRepository;
 import boki.tobyspring.order.OrderService;
+import boki.tobyspring.order.OrderServiceImpl;
+import boki.tobyspring.order.OrderServiceTxProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -21,10 +23,13 @@ public class OrderConfig {
 
     @Bean
     public OrderService orderService(
-        PlatformTransactionManager transactionManager,
-        OrderRepository orderRepository
+        OrderRepository orderRepository,
+        PlatformTransactionManager transactionManager
     ) {
-        return new OrderService(orderRepository, transactionManager);
+        return new OrderServiceTxProxy(
+            new OrderServiceImpl(orderRepository),
+            transactionManager
+        );
     }
 
 }

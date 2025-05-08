@@ -56,6 +56,8 @@ public class OrderServiceSpringTest {
 
     @Test
     void createDuplicatedOrders() {
+        System.out.println(this.orderService.getClass()); // Proxy
+
         List<OrderReq> orderReqs = List.of(
             new OrderReq("0300", BigDecimal.ONE),
             new OrderReq("0300", BigDecimal.TWO)
@@ -65,7 +67,6 @@ public class OrderServiceSpringTest {
             .isInstanceOf(DataIntegrityViolationException.class);
 
         JdbcClient client = JdbcClient.create(dataSource);
-
         var count = client.sql("SELECT COUNT(*) FROM orders WHERE NO = '0300'").query(Long.class).single();
         Assertions.assertThat(count).isEqualTo(0);
     }
