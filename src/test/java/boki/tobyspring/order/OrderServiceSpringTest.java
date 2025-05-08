@@ -17,11 +17,21 @@ public class OrderServiceSpringTest {
     @Autowired
     OrderService orderService;
 
+    @Autowired
+    OrderRepository orderRepository;
+
     @Test
     void createOrder() {
         var order = orderService.createOrder("0100", BigDecimal.ONE);
 
         Assertions.assertThat(order.getId()).isGreaterThan(0);
+    }
+
+    @Test
+    void getOrder() {
+        Order order = orderRepository.findOrderById(1L);
+
+        Assertions.assertThat(order.getId()).isEqualTo(1);
     }
 
 }

@@ -1,2 +1,2 @@
-select next value for orders_SEQ
-insert into orders (no,total,id) values (?,?,?);
+SELECT next value FOR orders_SEQ
+INSERT INTO orders (no,total,id) VALUES (?,?,?);
